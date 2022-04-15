@@ -1,0 +1,9 @@
+/* responsive code */
+@media (max-width:768px) {
+    .toggle-menu {
+        display: block;
+    }
+    .nav-list {
+        display: none;
+    }
+}
