@@ -9,9 +9,6 @@
 } 
 
 
-
-
-
 .headder-wraper {
     padding: 30px;
     height: 100vh;
@@ -93,3 +90,50 @@
     font-family: Roboto;
     font-size: 17px;
 }
+
+/* style of slider */
+
+.slide{
+    display: block;
+    width: 100%;
+}
+
+.slide img{
+    width: 100%;
+    height: 500px;
+}
+.slider{
+    position: relative;
+}
+
+.arrow{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 35px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+    border: none;
+}
+.arrow.arrow-left{
+    left: 30px;
+
+}
+.arrow.arrow-right{
+    right: 30px;
+}
+.title{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #fff;
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+
