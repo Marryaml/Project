@@ -7,12 +7,20 @@ burgerButton.addEventListener('click', function() {
     burgerButton.classList.toggle('active');
 })
 
-//  სერვერიდან ინფორმაციია჻჻
+
+
+// //  სერვერიდან ინფორმაციია჻჻
+let Photos =  document.querySelector('.api');
+
+let result = document.getElementById('result')
+let filter = document.getElementById('filter')
+let listItems = [];
+
 
 let cPage = 1;
 
-function getUsers(page) {
-    fetch('https://reqres.in/api/users?page=' + page, {
+function getUsers(cPage) {
+    fetch('https://reqres.in/api/users?page=' + cPage, {
         method: 'GET'
     })
     .then(function(x) {
@@ -23,37 +31,80 @@ function getUsers(page) {
     })
 // ჯავა სკრიპტის შეცდომის შემთხვევაში
 
-    .then(function(xData) {
+    // .then(function(x) {
 
-        var fragment = document.createDocumentFragment();
+    //     // var fragment = document.createDocumentFragment();
 
-        xData.data.forEach(element => {
-            let li = document.createElement('li');
-            li.textContent = element.photos;
+    //     xData.data.forEach(element => {
+    //         let li = document.createElement('li');
+    //         li.textContent = element.photos;
 
-            fragment.appendChild(li);
-        });
+    //         fragment.appendChild(li);
+    //     });
   
 
-        document.getElementById('users-list').appendChild(fragment);
+    //     document.getElementById('users-list').appendChild(fragment);
+    // })
+
+    .then(function(x) {
+        console.log(x.data);
+        xpage(x.data)
+        
     })
-    .catch(function(error) {
 
-// სტატუსკოდების რენდერის ლოგიკა
-        if (error == 404) {
-            let p = document.createElement('p');
-            p.textContent = 'Page not found';
+//     .catch(function(error) {
 
-            document.getElementById('api').appendChild(p)
-        } else {
-            let p = document.createElement('p');
-            p.textContent = 'Server Error';
+// // სტატუსკოდების რენდერის ლოგიკა
+//         if (error == 404) {
+//             let p = document.createElement('p');
+//             p.textContent = 'Page not found';
 
-            document.getElementById('api').appendChild(p)
+//             document.getElementById('api').appendChild(p)
+//         } else {
+//             let p = document.createElement('p');
+//             p.textContent = 'Server Error';
+
+//             document.getElementById('api').appendChild(p)
+//         }
+
+//     })
+}
+
+function xpage(x){
+    x.forEach(element => {
+        let div = document.createElement('div')
+        div.classList.add('Photos')
+
+        let img = document.createElement('img')
+        img.src = element.avatar
+        let li  =  document.createElement('li')
+        li.textContent = element.first_name;
+
+        div.appendChild(img)
+        div.appendChild(li)
+
+        Photos.appendChild(div)
+        
+    });
+}
+// filter
+function filterData(searchItem){
+    listItems.forEach((item)=>{
+        console.log(item)
+        if(item.innerText.toLowerCase().includes(searchItem.toLowerCase())){
+            item.classList.remove('active');
+        }else{
+            item.classList.add('active')
         }
-
     })
 }
+
+filter.addEventListener('input',(event)=>{
+    filterData(event.target.value)
+})
+
+
+
 
 document.getElementById('loadmore').addEventListener('click', function() {
     cPage += 1;
@@ -63,126 +114,131 @@ document.getElementById('loadmore').addEventListener('click', function() {
 getUsers(cPage);
 
 
+
+
 // slider
 
-let data = [
-    {
-        id: 1,
-        imageUrl: 'https://www.pexels.com/photo/photo-of-tent-at-near-trees-2422265/',
-        title: 'image-title1',
-        url: 'https://google.com'
-    },
+// let data = [
+//     {
+//         id: 1,
+//         imageUrl: 'https://www.pexels.com/photo/photo-of-tent-at-near-trees-2422265/',
+//         title: 'image-title1',
+//         url: 'https://google.com'
+//     },
 
-    {
-        id: 2,
-        imageUrl: 'https://www.pexels.com/photo/six-camping-tents-in-forest-699558/',
-        title: 'image-title2',
-        url: 'https://google.com'
-    },
-    {
-        id: 3,
-        imageUrl: 'https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/',
-        title: 'image-title3',
-        url: 'https://google.com'
+//     {
+//         id: 2,
+//         imageUrl: 'https://www.pexels.com/photo/six-camping-tents-in-forest-699558/',
+//         title: 'image-title2',
+//         url: 'https://google.com'
+//     },
+//     {
+//         id: 3,
+//         imageUrl: 'https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/',
+//         title: 'image-title3',
+//         url: 'https://google.com'
 
-    },
-    {
-        id: 4,
-        imageUrl: 'https://www.pexels.com/photo/green-tent-on-top-of-mountain-803226/',
-        title: 'image-title4',
-        url: 'https://google.com'
-    }
-]
-
-
-
-
-let arrowLeft = document.getElementById('arrow-left-button');
-let arrowRight = document.getElementById('arrow-right-button');
-let sliderContent = document.getElementById('slider-content');
-
-
-let sliderIndex = 0;
-
-function createAtag(item) {
-    let tag = document.createElement('a');
-    tag.setAttribute('href', item.url);
-    tag.setAttribute('class', 'slide');
-
-    return tag;
-}
-
-function createH2tag(item){
-    let tagtitle = document.createElement('h2');
-    tagtitle.setAttribute('class', 'title');
-    tagtitle.append(item.title);
-
-    return tagtitle;
-}
-
-function createImgtag(item) {
-    let tagImage = document.createElement('img');
-    tagImage.setAttribute('src', item.imageUrl);
-    tagImage.setAttribute('alt', item.title);
-
-    return tagImage;
-}
+//     },
+//     {
+//         id: 4,
+//         imageUrl: 'https://www.pexels.com/photo/green-tent-on-top-of-mountain-803226/',
+//         title: 'image-title4',
+//         url: 'https://google.com'
+//     }
+// ]
 
 
 
-function setSlide(){
-    sliderContent.innerHTML = ' ';
-    let slideItem = createAtag(data[sliderIndex]);
-    let h2Tag = createH2tag(data[sliderIndex]);
-    let imgTag = createImgtag(data[sliderIndex]);
 
-    slideItem.appendChild(imgTag);
-    slideItem.appendChild(h2Tag);
+// let arrowLeft = document.getElementById('arrow-left-button');
+// let arrowRight = document.getElementById('arrow-right-button');
+// let sliderContent = document.getElementById('slider-content');
 
-    sliderContent.appendChild(slideItem);
+
+// let sliderIndex = 0;
+
+// function createAtag(item) {
+//     let tag = document.createElement('a');
+//     tag.setAttribute('href', item.url);
+//     tag.setAttribute('class', 'slide');
+
+//     return tag;
+// }
+
+// function createH2tag(item){
+//     let tagtitle = document.createElement('h2');
+//     tagtitle.setAttribute('class', 'title');
+//     tagtitle.append(item.title);
+
+//     return tagtitle;
+// }
+
+// function createImgtag(item) {
+//     let tagImage = document.createElement('img');
+//     tagImage.setAttribute('src', item.imageUrl);
+//     tagImage.setAttribute('alt', item.title);
+
+//     return tagImage;
+// }
+
+
+
+// function setSlide(){
+//     sliderContent.innerHTML = ' ';
+//     let slideItem = createAtag(data[sliderIndex]);
+//     let h2Tag = createH2tag(data[sliderIndex]);
+//     let imgTag = createImgtag(data[sliderIndex]);
+
+//     slideItem.appendChild(imgTag);
+//     slideItem.appendChild(h2Tag);
+
+//     sliderContent.appendChild(slideItem);
 
   
 
-    console.log(slideItem);
+//     console.log(slideItem);
 
 
 
 
-    arrowLeft.addEventListener('click', function(){
-        if (sliderIndex <= 0){
-            sliderIndex =  data.length - 1;
-            setSlide();
-            return;
-        }
+//     arrowLeft.addEventListener('click', function(){
+//         if (sliderIndex <= 0){
+//             sliderIndex =  data.length - 1;
+//             setSlide();
+//             return;
+//         }
 
-        sliderIndex--;
-        setSlide();   
-    });
+//         sliderIndex--;
+//         setSlide();   
+//     });
 
-    arrowRight.addEventListener('click', function(){
-        if (sliderIndex >=  data.length - 1) {
-            sliderIndex = 0;
-            setSlide();
-            return;
-        }
+//     arrowRight.addEventListener('click', function(){
+//         if (sliderIndex >=  data.length - 1) {
+//             sliderIndex = 0;
+//             setSlide();
+//             return;
+//         }
 
-        sliderIndex++;
-        setSlide();
+//         sliderIndex++;
+//         setSlide();
 
-    });
+//     });
 
-    arrowLeft.addEventListener('click', arrowLeftClick);
-    arrowRight.addEventListener('click', arrowRightClick);
+//     arrowLeft.addEventListener('click', arrowLeftClick);
+//     arrowRight.addEventListener('click', arrowRightClick);
 
-    setInterval( () =>{
-        arrowRightClick();
+//     setInterval( () =>{
+//         arrowRightClick();
 
-    },  3000);
+//     },  3000);
 
 
-    setSlide();
+//     setSlide();
 
-}
+// }
+
+
+
 
 
 

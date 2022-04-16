@@ -1,12 +1,13 @@
 /* style of Header */
-.header-bg{
+/* .header-bg{
     background-image: url("../images/BG.png");
     height: 900px;
     width: 1500px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-} 
+    z-index: 2;
+}  */
 
 
 .headder-wraper {
@@ -23,7 +24,7 @@
 }
 .nav-li li a {
     color: black
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
 .nav-li li {
@@ -137,3 +138,14 @@
 }
 
 
+/* style of Server */
+
+.api{
+    display: flex;
+ 
+    
+}
+.Photos {
+    margin-right: 10px;
+
+}
