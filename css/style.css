@@ -127,14 +127,39 @@
 
 .server{
     display: flex;
+    position: absolute;
+    background-color: antiquewhite;
+    width: 100%;
+    height: 30%;
     
 
 }
+.h2t{
+    font-size: 20px;
+    font-family: 'Roboto';
+    color: brown;
+    margin-bottom: 20px;
+}
 
+.loadmore{
+    height: 50%;
+    margin-top: 70px;
+    color: darkgoldenrod;
+}
 
+.filtertext{
+    margin-bottom: 20px;
+}
 
+.api{
+    display: flex;
+ 
+    
+}
+.Photos {
+    margin-right: 10px;
 
-
+}
 
 
 /* style of slider */
@@ -183,14 +208,54 @@
 }
 
 
-/* style of Server */
+/* Style of Footer */
 
-.api{
+.footer{
+    position: relative;
+    background-color: antiquewhite;
+    margin-top: 600px;
     display: flex;
- 
-    
-}
-.Photos {
-    margin-right: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 1200px; */
+    height: 200px;
 
+
+}
+
+.footicon{
+    width: 200px;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    color: brown;
+    font-family: Roboto;
+    border-color: grey;
+    padding-bottom: 30px;
+    width: 200px;
+    max-width: 350px;
+    margin-left: 10px;
+
+}
+
+.list1{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.copy{
+    width: 20px;
+    margin-top: 150px;
+}
+
+.footicon{
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 20px;
 }
