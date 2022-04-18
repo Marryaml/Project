@@ -7,6 +7,45 @@ burgerButton.addEventListener('click', function() {
     burgerButton.classList.toggle('active');
 })
 
+//Form Validation
+
+document.getElementById('Sign In').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    let errors = {};
+    let form = event.target;
+    
+    let user = document.querySelector('[name="user"]');
+
+    if (user.length < 7 || user == " " ){
+        errors.user = 'The name must contain at least 7 characters';
+    }
+
+    let password = document.getElementById('password').value;
+
+    let Checkbox = document.getElementById('ACbox').checked;
+
+    if (!Checkbox) {
+        errors.agree = 'Accept to the Terms and Conditions';
+    }
+
+    form.querySelectorAll('.error-text').forEach(item => {
+        item.textContent = '';
+    })
+
+    for (let item in errors) {
+        let errorPlaceholder = document.getElementById('error_' + item);
+
+        if (errorPlaceholder) {
+            errorPlaceholder.textContent = errors[item];
+        }
+    }
+
+    if(Object.keys(errors).length == 0) {
+        form.submit();
+    }
+
+});
 
 
 // //  სერვერიდან ინფორმაციია჻჻
@@ -112,6 +151,37 @@ document.getElementById('loadmore').addEventListener('click', function() {
 })
 
 getUsers(cPage);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -236,6 +306,7 @@ getUsers(cPage);
 //     setSlide();
 
 // }
+
 
 
 

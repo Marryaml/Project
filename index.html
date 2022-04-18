@@ -20,51 +20,95 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<body>
-    <header class="header-bg">
-        <div class="box">
-            <nav class="navigation">
+<body> 
 
-                <div class="toggle-menu" id="toggleButton">
-                    <div class="line line1"></div>
-                    <div class="line line2"></div>
-                    <div class="line line3"></div>
-                </div>
+    <!-- Burger Bar -->
+    <section>
 
-                <ul class="nav-li" id="nav-ul">
-                    <li  class="nav-text"><a href="#">Home</a></li>
-                    <li class="nav-text"><a href="#">Destination</a></li>
-                    <li class="nav-text"><a href="#">Event</a></li>
-                    <li class="nav-text"><a href="#">About</a></li>
-                    <li class="nav-text"><a href="#">Contact</a></li>
-                </ul>
+        <header class="header-bg">
+            <div class="box">
+                <nav class="navigation">
 
-            </nav>
-        </div>
-        
-    </header>
+                    <div class="toggle-menu" id="toggleButton">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
 
-    <div>
+                    <ul class="nav-li" id="nav-ul">
+                        <li  class="nav-text"><a href="#">Home</a></li>
+                        <li class="nav-text"><a href="#">Destination</a></li>
+                        <li class="nav-text"><a href="#">Event</a></li>
+                        <li class="nav-text"><a href="#">About</a></li>
+                        <li class="nav-text"><a href="#">Contact</a></li>
+                    </ul>
 
-
-
-
-        <div id="api">
-
-            <div class="search-block">
-                <h5>Users Filter</h5>
-                <input type="text" id="filter" placeholder="Search...">
+                </nav>
             </div>
-            <div class="api" id="server"></div>
+            
+        </header>
+
+    </section>
+
+    <!-- ფორმის ვალიდიაცია -->
+
+    <section>
+        <div class=" form-box">
+            <form class="form" action="" method="POST" id="Sign In">
+                        <div>
+                        <input type="text" name="user" id="user" placeholder="First-Name">
+                        <div class="error-text" id="error_user"></div>
+                    </div>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Email">
+                        <div class="error-text" id="error_email"></div>
+                    </div>
+                    <div>
+                        <input type="password" name="pass" id="password" placeholder="Password">
+                        <div class="error-text" id="error_password"></div>
+                    </div>
+        
+                    <div>
+                        <input type="Check" name="Agree" id="ACbox">
+                        <label class="label" for="ACbox"> Accept to the Terms and Conditions </label>
+                        <div class="error-text" id="error_agree"></div>
+                    </div>
+        
+                    <button type="submit"> Send </button>
+                </form>
+        
+            </div>
+    </section>
+
+<!-- სერვერიდან ინფორმაცია -->
+
+    <section>
+        <div class="server" >
+            <div id="api">
+
+                <div class="search-block">
+                    <h5>Users Filter</h5>
+                    <input type="text" id="filter" placeholder="Search...">
+                </div>
+                <div class="api" id="server"></div>
+
+            </div>
+
+            <button id="loadmore"> Load more</button>
+
 
         </div>
-        <button id="loadmore"> Load more</button>
+
+    </section> 
 
 
-    </div>
 
 
-    <div class="slider">
+
+
+
+
+    <!-- <div class="slider">
         <button class="arrow arrow-left" id="arrow-left-button"> < </button>
         <button class="arrow arrow-right" id="arrow-right-button"> > </button>
 
@@ -75,7 +119,7 @@
 
         
 
-    </div>
+    </div> -->
 
 
 

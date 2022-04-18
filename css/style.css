@@ -1,20 +1,18 @@
 /* style of Header */
-/* .header-bg{
+.header-bg{
     background-image: url("../images/BG.png");
     height: 900px;
-    width: 1500px;
+    width: 1400px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    z-index: 2;
-}  */
-
-
-.headder-wraper {
+    /* z-index: 2; */
     padding: 30px;
-    height: 100vh;
+    /* height: 100%; */
     position: relative;
-}
+} 
+
+
 .navigation {
     display: flex;
     justify-content: flex-end;
@@ -68,7 +66,7 @@
 .active .line2 {
     display: none;
 }
-.active .lin e3 {
+.active .line3 {
     top: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
 }
@@ -91,6 +89,53 @@
     font-family: Roboto;
     font-size: 17px;
 }
+
+ /* Style of Form validation */
+ .form-box{
+     width: 100%;
+     display: flex;
+     position: absolute;
+     /* background-color: bisque; */
+     justify-content: center;
+     border-radius: 15%;
+
+ }
+
+.form{
+    margin-top:100px;
+    margin-left:200px;
+    font-size: 50px;
+    border-radius:20px;
+    font-family: 'Roboto';
+}
+    
+.error-text {
+    color: blue     
+}
+
+.label{
+    font-size: 15px;
+    font-family: 'Roboto';
+
+}
+    
+.password {
+      position: relative;
+      display: inline-block;
+}
+/* Style of Server box */
+
+.server{
+    display: flex;
+    
+
+}
+
+
+
+
+
+
 
 /* style of slider */
 
