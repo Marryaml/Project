@@ -154,43 +154,164 @@ getUsers(cPage);
 
 
 
-slider
+// // slider
+
+// let data = [
+//     {
+//         id: 1,
+//         imageUrl: 'https://www.pexels.com/photo/photo-of-tent-at-near-trees-2422265/',
+//         title: 'image-title1',
+//         url: 'https://google.com'
+//     },
+
+//     {
+//         id: 2,
+//         imageUrl: 'https://www.pexels.com/photo/six-camping-tents-in-forest-699558/',
+//         title: 'image-title2',
+//         url: 'https://google.com'
+//     },
+//     {
+//         id: 3,
+//         imageUrl: 'https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/',
+//         title: 'image-title3',
+//         url: 'https://google.com'
+
+//     },
+//     {
+//         id: 4,
+//         imageUrl: 'https://www.pexels.com/photo/green-tent-on-top-of-mountain-803226/',
+//         title: 'image-title4',
+//         url: 'https://google.com'
+//     }
+// ]
+
+
+
+
+// let arrowLeft = document.getElementById('arrow-left-button');
+// let arrowRight = document.getElementById('arrow-right-button');
+// let sliderContent = document.getElementById('slider-content');
+
+
+// let sliderIndex = 0;
+
+// function createAtag(item) {
+//     let tag = document.createElement('a');
+//     tag.setAttribute('href', item.url);
+//     tag.setAttribute('class', 'slide');
+
+//     return tag;
+// }
+
+// function createH2tag(item){
+//     let tagtitle = document.createElement('h2');
+//     tagtitle.setAttribute('class', 'title');
+//     tagtitle.append(item.title);
+
+//     return tagtitle;
+// }
+
+// function createImgtag(item) {
+//     let tagImage = document.createElement('img');
+//     tagImage.setAttribute('src', item.imageUrl);
+//     tagImage.setAttribute('alt', item.title);
+
+//     return tagImage;
+// }
+
+
+
+// function setSlide(){
+//     sliderContent.innerHTML = ' ';
+//     let slideItem = createAtag(data[sliderIndex]);
+//     let h2Tag = createH2tag(data[sliderIndex]);
+//     let imgTag = createImgtag(data[sliderIndex]);
+
+//     slideItem.appendChild(imgTag);
+//     slideItem.appendChild(h2Tag);
+
+//     sliderContent.appendChild(slideItem);
+
+  
+
+//     console.log(slideItem);
+
+
+
+
+//     arrowLeft.addEventListener('click', function(){
+//         if (sliderIndex <= 0){
+//             sliderIndex =  data.length - 1;
+//             setSlide();
+//             return;
+//         }
+
+//         sliderIndex--;
+//         setSlide();   
+//     });
+
+//     arrowRight.addEventListener('click', function(){
+//         if (sliderIndex >=  data.length - 1) {
+//             sliderIndex = 0;
+//             setSlide();
+//             return;
+//         }
+
+//         sliderIndex++;
+//         setSlide();
+
+//     });
+
+//     arrowLeft.addEventListener('click', arrowLeftClick);
+//     arrowRight.addEventListener('click', arrowRightClick);
+
+//     setInterval( () =>{
+//         arrowRightClick();
+
+//     },  3000);
+
+
+//     setSlide();
+
+// }
+
+
+
+
+//  სლაიდერი....
 
 let data = [
     {
         id: 1,
-        imageUrl: 'https://www.pexels.com/photo/photo-of-tent-at-near-trees-2422265/',
-        title: 'image-title1',
+        imageUrl: 'images/1.jpg',
+        title: 'Tour 1',
         url: 'https://google.com'
     },
-
     {
         id: 2,
-        imageUrl: 'https://www.pexels.com/photo/six-camping-tents-in-forest-699558/',
-        title: 'image-title2',
+        imageUrl: 'images/2.jpg',
+        title: 'Tour 2',
         url: 'https://google.com'
     },
     {
         id: 3,
-        imageUrl: 'https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/',
-        title: 'image-title3',
+        imageUrl: 'images/3.jpg',
+        title: 'Tour 3',
         url: 'https://google.com'
-
     },
     {
         id: 4,
-        imageUrl: 'https://www.pexels.com/photo/green-tent-on-top-of-mountain-803226/',
-        title: 'image-title4',
+        imageUrl: 'images/4.jpg',
+        title: 'Tour 4',
         url: 'https://google.com'
     }
+
 ]
-
-
-
 
 let arrowLeft = document.getElementById('arrow-left-button');
 let arrowRight = document.getElementById('arrow-right-button');
 let sliderContent = document.getElementById('slider-content');
+let dotsList = document.getElementsByClassName('dot');
 
 
 let sliderIndex = 0;
@@ -203,7 +324,7 @@ function createAtag(item) {
     return tag;
 }
 
-function createH2tag(item){
+function createH2tag(item) {
     let tagtitle = document.createElement('h2');
     tagtitle.setAttribute('class', 'title');
     tagtitle.append(item.title);
@@ -213,72 +334,85 @@ function createH2tag(item){
 
 function createImgtag(item) {
     let tagImage = document.createElement('img');
-    tagImage.setAttribute('src', item.imageUrl);
+    tagImage.setAttribute('src',  item.imageUrl);
     tagImage.setAttribute('alt', item.title);
 
     return tagImage;
 }
 
+function createDots(item) {
+    let dots = document.createElement('div');
+    dots.setAttribute('class', 'dots');
 
+    data.forEach( (element) => {
+        let dotElement = document.createElement('div');
+        dotElement.setAttribute('class', 'dot');
+        dotElement.setAttribute('data-id', element.id - 1);
 
-function setSlide(){
+        dotElement.onclick = function(event) {
+            let id = event.target.getAttribute('data-id');
+            sliderIndex = id;
+            setSlide();
+        }
+
+        dots.appendChild(dotElement);
+    });
+
+    console.log(dots);
+
+    return dots;
+}
+
+function CurrentDotActive() {
+    dotsList[sliderIndex].classList.add('active');
+}
+
+function setSlide() {
     sliderContent.innerHTML = ' ';
     let slideItem = createAtag(data[sliderIndex]);
     let h2Tag = createH2tag(data[sliderIndex]);
     let imgTag = createImgtag(data[sliderIndex]);
+    let dots = createDots();
 
     slideItem.appendChild(imgTag);
     slideItem.appendChild(h2Tag);
 
     sliderContent.appendChild(slideItem);
+    sliderContent.appendChild(dots);
 
-  
+    CurrentDotActive();
 
     console.log(slideItem);
-
-
-
-
-    arrowLeft.addEventListener('click', function(){
-        if (sliderIndex <= 0){
-            sliderIndex =  data.length - 1;
-            setSlide();
-            return;
-        }
-
-        sliderIndex--;
-        setSlide();   
-    });
-
-    arrowRight.addEventListener('click', function(){
-        if (sliderIndex >=  data.length - 1) {
-            sliderIndex = 0;
-            setSlide();
-            return;
-        }
-
-        sliderIndex++;
-        setSlide();
-
-    });
-
-    arrowLeft.addEventListener('click', arrowLeftClick);
-    arrowRight.addEventListener('click', arrowRightClick);
-
-    setInterval( () =>{
-        arrowRightClick();
-
-    },  3000);
-
-
-    setSlide();
-
 }
 
+function arrowleftClick() {
+    if (sliderIndex <= 0) {
+        sliderIndex = data.length - 1;
+        setSlide();
+        return;
+    }
+
+    sliderIndex--;
+    setSlide();
+}
+
+function arrowRightClick() {
+    if (sliderIndex >= data.length - 1) {
+        sliderIndex = 0;
+        setSlide();
+        return;
+    }
+
+    sliderIndex++;
+    setSlide();
+}
+
+arrowLeft.addEventListener('click', arrowleftClick)
+arrowRight.addEventListener('click', arrowRightClick);
 
 
 
-
+setSlide();
 
 
 
